@@ -38,7 +38,8 @@ module Datadog
               remove_method :perform_request
 
               def perform_request(*args)
-                service = Datadog.configuration_for(self, :service_name) || datadog_configuration[:service_name]
+                test self.transport with old ES
+                service = Datadog.configuration_for(transport,  :service_name) || datadog_configuration[:service_name]
 
                 method = args[0]
                 path = args[1]
